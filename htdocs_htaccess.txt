@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Jika file/folder ada di public/, serve langsung
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Teruskan semua request ke index.php di root (yang redirect ke Laravel)
+    RewriteRule ^ index.php [L]
+</IfModule>

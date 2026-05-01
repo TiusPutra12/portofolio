@@ -1,0 +1,28 @@
+name: Deploy Laravel to InfinityFree
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  web-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ambil Kode Terbaru dari GitHub
+      uses: actions/checkout@v4
+    
+    - name: Upload Otomatis ke InfinityFree
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: htdocs/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/vendor/**
+          .env
+          .env.example

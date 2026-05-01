@@ -1013,7 +1013,7 @@
             });
         }
 
-        // ── Image Modal Viewer Logic ──
+
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('image-modal');
             const modalImg = document.getElementById('modal-image');

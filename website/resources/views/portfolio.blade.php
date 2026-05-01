@@ -95,19 +95,22 @@
 
                             <p class="pl-4"><span class="text-violet-400">"role"</span><span class="text-slate-500">:
                                 </span><span class="text-yellow-300">"{{ $profile['role'] ?? 'Mahasiswa' }}"</span><span
-                                    class="text-slate-600">{{ !empty($profile['address']) || !empty($profile['additional_info']) ? ',' : '' }}</span></p>
+                                    class="text-slate-600">{{ !empty($profile['address']) || !empty($profile['additional_info']) ? ',' : '' }}</span>
+                            </p>
 
                             @if (!empty($profile['address']))
                                 <p class="pl-4"><span class="text-violet-400">"address"</span><span
                                         class="text-slate-500">: </span><span
                                         class="text-yellow-300">"{{ $profile['address'] }}"</span><span
-                                        class="text-slate-600">{{ !empty($profile['additional_info']) ? ',' : '' }}</span></p>
+                                        class="text-slate-600">{{ !empty($profile['additional_info']) ? ',' : '' }}</span>
+                                </p>
                             @endif
 
                             @if (!empty($profile['additional_info']))
                                 @foreach ($profile['additional_info'] as $index => $info)
                                     <p class="pl-4">
-                                        <span class="text-violet-400">"{{ strtolower(str_replace(' ', '_', $info['label'])) }}"</span><span
+                                        <span
+                                            class="text-violet-400">"{{ strtolower(str_replace(' ', '_', $info['label'])) }}"</span><span
                                             class="text-slate-500">: </span>
                                         <span class="text-yellow-300">"{{ $info['value'] }}"</span>
                                         <span
@@ -621,7 +624,8 @@
 
                                                         <div class="flex flex-col gap-1">
                                                             <p class="text-[10px] font-mono text-slate-500">
-                                                                {{ $sub->start_date?->format('d M Y') }} - {{ $sub->end_date?->format('d M Y') ?? 'Sekarang' }}
+                                                                {{ $sub->start_date?->format('d M Y') }} -
+                                                                {{ $sub->end_date?->format('d M Y') ?? 'Sekarang' }}
                                                                 @if ($sub->supervisor)
                                                                     <span class="mx-2 opacity-30">|</span>
                                                                     <span class="text-slate-400">Pembimbing:
@@ -629,7 +633,8 @@
                                                                 @endif
                                                             </p>
                                                             @if ($sub->description)
-                                                                <p class="text-[10px] text-slate-500 leading-relaxed font-mono mt-1 opacity-80">
+                                                                <p
+                                                                    class="text-[10px] text-slate-500 leading-relaxed font-mono mt-1 opacity-80">
                                                                     {{ $sub->description }}
                                                                 </p>
                                                             @endif

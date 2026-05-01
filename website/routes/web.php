@@ -42,4 +42,7 @@ Route::prefix('admin')->middleware('admin.password')->group(function () {
 
     Route::get('/socials', [SocialController::class, 'edit'])->name('admin.socials.edit');
     Route::put('/socials', [SocialController::class, 'update'])->name('admin.socials.update');
+
+    Route::get('/account', [\App\Http\Controllers\Admin\AccountController::class, 'edit'])->name('admin.account.edit');
+    Route::put('/account', [\App\Http\Controllers\Admin\AccountController::class, 'update'])->name('admin.account.update');
 });

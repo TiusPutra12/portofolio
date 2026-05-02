@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Storage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,8 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Paksa HTTPS di production agar tidak ada mixed content error
-        if (app()->environment('production')) {
+        // Paksa HTTPS jika APP_URL menggunakan https (berlaku di hosting meski debug=true)
+        if (str_starts_with(config('app.url'), 'https://')) {
             URL::forceScheme('https');
         }
     }

@@ -3,26 +3,78 @@ name: Deploy Laravel to InfinityFree
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   web-deploy:
     runs-on: ubuntu-latest
+
     steps:
     - name: Ambil Kode Terbaru dari GitHub
       uses: actions/checkout@v4
-    
-    - name: Upload Otomatis ke InfinityFree
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, pdo, pdo_sqlite, sqlite3
+
+    - name: Install Composer Dependencies
+      run: composer install --no-dev --optimize-autoloader --no-interaction
+      working-directory: website
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install NPM & Build Assets
+      run: |
+        npm install
+        npm run build
+      working-directory: website
+
+    - name: Buat file index.php di root htdocs
+      run: |
+        cat > index.php << 'EOF'
+        <?php
+        $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
+        $publicPath = __DIR__ . '/website/public';
+        if ($uri !== '/' && file_exists($publicPath . $uri)) {
+            return false;
+        }
+        require_once $publicPath . '/index.php';
+        EOF
+
+    - name: Buat file .htaccess di root htdocs
+      run: |
+        cat > .htaccess << 'EOF'
+        <IfModule mod_rewrite.c>
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteRule ^ index.php [L]
+        </IfModule>
+        EOF
+
+    - name: Upload ke InfinityFree via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: htdocs/
+        local-dir: ./
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/**
-          **/vendor/**
-          .env
-          .env.example
+          website/.env
+          website/.env.example
+          website/storage/framework/cache/**
+          website/storage/framework/sessions/**
+          website/storage/framework/views/**
+          website/storage/logs/**
+          website/database/*.sqlite
+          htdocs_*.php
+          htdocs_*.txt

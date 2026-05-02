@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Ambil Kode Terbaru dari GitHub
+    - name: Checkout kode
       uses: actions/checkout@v4
 
-    - name: Setup PHP
+    - name: Setup PHP 8.3
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
         extensions: mbstring, pdo, pdo_sqlite, sqlite3
 
-    - name: Install Composer Dependencies
+    - name: Install Composer (tanpa dev)
       run: composer install --no-dev --optimize-autoloader --no-interaction
       working-directory: website
 
@@ -28,53 +28,114 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install NPM & Build Assets
+    - name: Build Vite Assets (CSS & JS)
       run: |
-        npm install
+        npm ci
         npm run build
       working-directory: website
 
-    - name: Buat file index.php di root htdocs
+    - name: Buat .env production
+      env:
+        APP_KEY: ${{ secrets.APP_KEY }}
+        ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
       run: |
-        cat > index.php << 'EOF'
+        cat > website/.env << ENVEOF
+        APP_NAME=DevPortfolio
+        APP_ENV=production
+        APP_KEY=${APP_KEY}
+        APP_DEBUG=false
+        APP_URL=https://tportfolio.wuaze.com
+
+        APP_LOCALE=en
+        APP_FALLBACK_LOCALE=en
+        APP_FAKER_LOCALE=en_US
+
+        APP_MAINTENANCE_DRIVER=file
+        BCRYPT_ROUNDS=12
+
+        LOG_CHANNEL=single
+        LOG_LEVEL=error
+
+        DB_CONNECTION=sqlite
+
+        SESSION_DRIVER=file
+        SESSION_LIFETIME=120
+        SESSION_ENCRYPT=false
+        SESSION_PATH=/
+        SESSION_DOMAIN=null
+
+        BROADCAST_CONNECTION=log
+        FILESYSTEM_DISK=local
+        QUEUE_CONNECTION=sync
+        CACHE_STORE=file
+
+        ADMIN_PASSWORD=${ADMIN_PASSWORD}
+        ENVEOF
+
+    - name: Buat database SQLite kosong
+      run: touch website/database/database.sqlite
+
+    - name: Siapkan struktur folder deploy
+      run: |
+        mkdir -p deploy_root/laravel_app
+        mkdir -p deploy_root/htdocs
+
+        # Salin semua file Laravel ke laravel_app/ (tanpa folder public/)
+        rsync -a \
+          --exclude='.git' \
+          --exclude='node_modules' \
+          --exclude='public' \
+          website/ deploy_root/laravel_app/
+
+        # Salin isi public/ langsung ke htdocs/ (web root)
+        rsync -a website/public/ deploy_root/htdocs/
+
+    - name: Tulis index.php yang menunjuk ke laravel_app
+      run: |
+        cat > deploy_root/htdocs/index.php << 'PHPEOF'
         <?php
-        $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '');
-        $publicPath = __DIR__ . '/website/public';
-        if ($uri !== '/' && file_exists($publicPath . $uri)) {
-            return false;
+
+        use Illuminate\Foundation\Application;
+        use Illuminate\Http\Request;
+
+        define('LARAVEL_START', microtime(true));
+
+        $appBase = dirname(__DIR__) . '/laravel_app';
+
+        if (file_exists($maintenance = $appBase . '/storage/framework/maintenance.php')) {
+            require $maintenance;
         }
-        require_once $publicPath . '/index.php';
-        EOF
 
-    - name: Buat file .htaccess di root htdocs
-      run: |
-        cat > .htaccess << 'EOF'
-        <IfModule mod_rewrite.c>
-            RewriteEngine On
-            RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteCond %{REQUEST_FILENAME} !-d
-            RewriteRule ^ index.php [L]
-        </IfModule>
-        EOF
+        require $appBase . '/vendor/autoload.php';
 
-    - name: Upload ke InfinityFree via FTP
+        $app = require_once $appBase . '/bootstrap/app.php';
+
+        $app->handleRequest(Request::capture());
+        PHPEOF
+
+    - name: Upload laravel_app ke hosting
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: laravel_app/
+        local-dir: ./deploy_root/laravel_app/
+        exclude: |
+          **/.git*
+          **/node_modules/**
+          storage/framework/cache/data/**
+          storage/framework/sessions/**
+          storage/framework/views/**
+          storage/logs/**
+
+    - name: Upload htdocs ke hosting
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: htdocs/
-        local-dir: ./
+        local-dir: ./deploy_root/htdocs/
         exclude: |
           **/.git*
-          **/.git*/**
-          **/node_modules/**
-          website/.env
-          website/.env.example
-          website/storage/framework/cache/**
-          website/storage/framework/sessions/**
-          website/storage/framework/views/**
-          website/storage/logs/**
-          website/database/*.sqlite
-          htdocs_*.php
-          htdocs_*.txt

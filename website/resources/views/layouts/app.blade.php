@@ -13,17 +13,17 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased min-h-screen bg-[#0a0e1a] text-slate-300">
+<body class="font-sans antialiased min-h-screen text-slate-300">
 
     {{-- ───── Navbar ───── --}}
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#050814]/70 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex items-center justify-between h-16 sm:h-20">
 
                 {{-- Logo --}}
                 <a href="/" class="flex items-center gap-2 group">
                     <span class="font-mono text-sm text-primary-400 opacity-60 group-hover:opacity-100 transition-opacity">&lt;</span>
-                    <span class="font-mono font-bold text-lg text-white">Dev<span class="text-primary-400">Portfolio</span></span>
+                    <span class="font-mono font-bold text-lg text-white">Tius<span class="text-primary-400">Portfolio</span></span>
                     <span class="font-mono text-sm text-primary-400 opacity-60 group-hover:opacity-100 transition-opacity">/&gt;</span>
                 </a>
 
@@ -46,7 +46,7 @@
         </div>
 
         {{-- Mobile Menu --}}
-        <div id="mobile-menu" class="hidden md:hidden bg-[#0d1117]/95 backdrop-blur-md border-t border-primary-900/30">
+        <div id="mobile-menu" class="hidden md:hidden bg-[#050814]/90 backdrop-blur-xl border-t border-white/5">
             <div class="px-4 py-3 space-y-1">
                 @foreach([['#about','about()'],['#projects','projects[]'],['#certificates','certs{}'],['#activities','timeline()']] as [$href,$label])
                     <a href="{{ $href }}" class="block px-4 py-2.5 rounded-lg text-xs font-mono font-medium text-slate-300 hover:text-primary-400 hover:bg-primary-950/50 transition-all">
@@ -62,16 +62,16 @@
     </main>
 
     {{-- ───── Footer ───── --}}
-    <footer class="bg-[#0d1117] border-t border-slate-800/50 py-12">
+    <footer class="bg-transparent border-t border-white/5 py-12 relative z-10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-2">
                     <span class="font-mono text-sm text-primary-400 opacity-50">&lt;</span>
-                    <span class="font-mono font-bold text-white">Dev<span class="text-primary-400">Portfolio</span></span>
+                    <span class="font-mono font-bold text-white">Tius<span class="text-primary-400">Portfolio</span></span>
                     <span class="font-mono text-sm text-primary-400 opacity-50">/&gt;</span>
                 </div>
-                <div class="font-mono text-xs text-slate-600 text-center">
-                    <span class="text-neon-500">// </span>Built with Laravel &amp; Tailwind CSS &bull; &copy; {{ date('Y') }}
+                <div class="font-mono text-xs text-slate-500 text-center flex-1">
+                    <span class="text-primary-400">// </span> TiusPortfolio &bull; &copy; {{ date('Y') }}
                 </div>
                 <div class="flex items-center gap-4">
                     <a href="#" class="text-slate-600 hover:text-primary-400 transition-colors">

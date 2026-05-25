@@ -120,37 +120,7 @@ function initCounters() {
     });
 }
 
-// Matrix rain particles (subtle background)
-function initMatrixRain() {
-    const canvas = document.getElementById('matrix-canvas');
-    if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-    const chars = '01アイウエオカキクケコサシスセソタチツテト';
-    const cols = Math.floor(canvas.width / 20);
-    const drops = Array(cols).fill(1);
-
-    setInterval(() => {
-        ctx.fillStyle = 'rgba(10, 14, 26, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(6, 182, 212, 0.15)';
-        ctx.font = '12px monospace';
-        drops.forEach((y, i) => {
-            const char = chars[Math.floor(Math.random() * chars.length)];
-            ctx.fillText(char, i * 20, y * 20);
-            if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-            drops[i]++;
-        });
-    }, 80);
-
-    window.addEventListener('resize', () => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-    });
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     initTypingEffect();
@@ -158,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initSmoothScroll();
     initNavbar();
-    initMatrixRain();
 
     // Init counters when about section enters viewport
     const aboutSection = document.getElementById('about');

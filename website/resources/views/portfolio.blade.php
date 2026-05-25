@@ -3,21 +3,17 @@
 @section('content')
 
     {{-- ═══════════════════════════════ HERO ═══════════════════════════════ --}}
-    <section class="relative min-h-[100svh] flex items-center overflow-hidden bg-[#0a0e1a]">
+    <section class="relative min-h-[100svh] flex items-center overflow-hidden bg-transparent">
 
-        {{-- Matrix Rain Canvas (background) --}}
-        <canvas id="matrix-canvas" class="absolute inset-0 w-full h-full opacity-100 pointer-events-none z-0"></canvas>
+        {{-- Mesh Gradient Background --}}
+        <div class="mesh-bg">
+            <div class="mesh-blob mesh-blob-1"></div>
+            <div class="mesh-blob mesh-blob-2"></div>
+            <div class="mesh-blob mesh-blob-3"></div>
+        </div>
 
         {{-- Grid overlay --}}
         <div class="absolute inset-0 grid-pattern pointer-events-none z-0"></div>
-
-        {{-- Radial glow spots --}}
-        <div
-            class="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-[120px] pointer-events-none z-0">
-        </div>
-        <div
-            class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[100px] pointer-events-none z-0">
-        </div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full py-28 sm:py-36">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -41,7 +37,7 @@
 
                     {{-- Greeting --}}
                     <p class="font-mono text-primary-400 text-sm font-medium mb-3 animate-fade-in delay-100">
-                        <span class="text-slate-500">// </span>Hello, World!
+                        Welcome to my portfolio
                     </p>
 
                     {{-- Name --}}
@@ -54,8 +50,8 @@
 
                     {{-- Description --}}
                     <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-lg mb-8 animate-fade-in delay-300">
-                        Membangun aplikasi web yang cepat, terukur, dan indah.
-                        Sangat antusias dengan penulisan kode yang bersih dan pengalaman pengguna yang luar biasa.
+                        Hidup seakan mati hari ini, 
+                        dan bermimpi seakan hidup selamanya
                     </p>
 
                     {{-- CTA Buttons --}}
@@ -66,22 +62,22 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
-                            view_projects()
+                            view_projects
                         </a>
                         <a href="#about"
                             class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary-700/60 text-primary-300 font-mono font-semibold text-sm hover:border-primary-400 hover:text-primary-100 hover:bg-primary-900/30 transition-all duration-300 hover:-translate-y-0.5">
-                            baca_selengkapnya();
+                            baca_selengkapnya
                         </a>
                     </div>
                 </div>
 
                 {{-- ── Right: Terminal Window ── --}}
                 <div class="animate-fade-in delay-300 w-full max-w-sm mx-auto lg:max-w-none mt-8 lg:mt-0">
-                    <div class="terminal-window" style="animation: float 6s ease-in-out infinite;">
-                        <div class="terminal-bar">
-                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-                            <span class="w-3 h-3 rounded-full bg-neon-500/80"></span>
+                    <div class="mac-window" style="animation: float 6s ease-in-out infinite;">
+                        <div class="mac-titlebar">
+                            <span class="mac-dot close"></span>
+                            <span class="mac-dot minimize"></span>
+                            <span class="mac-dot maximize"></span>
                         </div>
                         <div class="p-4 sm:p-6 font-mono text-xs sm:text-sm space-y-1.5 overflow-x-auto">
                             <p><span class="text-neon-400">❯</span> <span class="text-slate-300">Get-Content
@@ -235,25 +231,20 @@
     </section>
 
     {{-- ═══════════════════════════ ABOUT / STATS ═══════════════════════════ --}}
-    <section id="about" class="py-24 bg-[#0d1117] border-y border-slate-800/50 relative overflow-hidden">
+    <section id="about" class="py-24 bg-transparent border-y border-slate-800/50 relative overflow-hidden">
         {{-- Glow background --}}
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-600/5 rounded-full blur-[120px] pointer-events-none">
         </div>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-            <div class="text-center mb-12 scroll-reveal">
-                <span class="font-mono text-xs font-bold text-primary-400 tracking-widest uppercase">/* portofolio
-                    */</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Deskripsi</h2>
-            </div>
 
             {{-- Bento Grid Container --}}
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
 
                 {{-- 1. About Me (Large Cell) --}}
                 <div
-                    class="scroll-reveal tech-card p-6 sm:p-8 flex flex-col justify-center col-span-2 md:col-span-2 lg:col-span-2 md:row-span-2 group hover:border-primary-500/50 transition-all relative overflow-hidden">
+                    class="scroll-reveal glass-panel p-6 sm:p-8 flex flex-col justify-center col-span-2 md:col-span-2 lg:col-span-2 md:row-span-2 group hover:border-primary-500/50 transition-all relative overflow-hidden">
                     <div
                         class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                         <svg class="w-64 h-64 text-primary-500" fill="none" stroke="currentColor"
@@ -273,7 +264,7 @@
 
                 {{-- 2. Projects Stat --}}
                 <div
-                    class="scroll-reveal tech-card p-6 flex flex-col items-center justify-center text-center delay-100 col-span-1 md:col-span-1 lg:col-span-1 group hover:border-primary-500/50 transition-all relative overflow-hidden">
+                    class="scroll-reveal glass-panel p-6 flex flex-col items-center justify-center text-center delay-100 col-span-1 md:col-span-1 lg:col-span-1 group hover:border-primary-500/50 transition-all relative overflow-hidden">
                     <div
                         class="absolute -right-8 -bottom-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                         <svg class="w-32 h-32 text-primary-500" fill="none" stroke="currentColor"
@@ -287,13 +278,13 @@
                             class="font-mono text-5xl font-black text-white mb-2 group-hover:text-primary-400 transition-colors">
                             <span data-count="{{ $projects->count() }}">0</span>
                         </div>
-                        <p class="font-mono text-xs text-primary-400 font-medium uppercase tracking-widest">Proyek</p>
+                        <p class="font-mono text-xs text-primary-400 font-medium uppercase tracking-widest">PROJECT</p>
                     </div>
                 </div>
 
                 {{-- 3. Certificates Stat --}}
                 <div
-                    class="scroll-reveal tech-card p-6 flex flex-col items-center justify-center text-center delay-200 col-span-1 md:col-span-1 lg:col-span-1 group hover:border-violet-500/50 transition-all relative overflow-hidden">
+                    class="scroll-reveal glass-panel p-6 flex flex-col items-center justify-center text-center delay-200 col-span-1 md:col-span-1 lg:col-span-1 group hover:border-violet-500/50 transition-all relative overflow-hidden">
                     <div
                         class="absolute -left-8 -bottom-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                         <svg class="w-32 h-32 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -312,7 +303,7 @@
 
                 {{-- 4. Tech Stack (Wide Cell) --}}
                 <div
-                    class="scroll-reveal tech-card p-6 col-span-2 md:col-span-2 lg:col-span-2 flex flex-col justify-center delay-300 group hover:border-slate-500/50 transition-all relative overflow-hidden">
+                    class="scroll-reveal glass-panel p-6 col-span-2 md:col-span-2 lg:col-span-2 flex flex-col justify-center delay-300 group hover:border-slate-500/50 transition-all relative overflow-hidden">
                     <div
                         class="absolute -right-10 top-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
                         <svg class="w-48 h-48 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -321,8 +312,8 @@
                         </svg>
                     </div>
                     <div class="relative z-10">
-                        <p class="font-mono text-xs text-primary-400 font-bold tracking-widest uppercase mb-4">//
-                            skill.json</p>
+                        <p class="font-mono text-xs text-primary-400 font-bold tracking-widest uppercase mb-4">
+                            skill saya</p>
                         <div class="flex flex-wrap gap-2">
                             @php
                                 // Daftar kombinasi warna: Proyek (Primary), Sertifikat (Violet), Kegiatan (Neon/Amber)
@@ -347,7 +338,7 @@
 
                 {{-- 5. Activities Stat --}}
                 <div
-                    class="scroll-reveal tech-card p-6 flex flex-col items-center justify-center text-center delay-100 col-span-2 md:col-span-1 lg:col-span-1 group hover:border-neon-500/50 transition-all relative overflow-hidden">
+                    class="scroll-reveal glass-panel p-6 flex flex-col items-center justify-center text-center delay-100 col-span-2 md:col-span-1 lg:col-span-1 group hover:border-neon-500/50 transition-all relative overflow-hidden">
                     <div
                         class="absolute -right-8 -bottom-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                         <svg class="w-32 h-32 text-neon-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -366,7 +357,7 @@
 
                 {{-- 6. Location / Status --}}
                 <div
-                    class="scroll-reveal tech-card p-6 flex flex-col justify-center col-span-2 md:col-span-1 lg:col-span-1 group hover:border-green-500/50 transition-all relative overflow-hidden delay-200">
+                    class="scroll-reveal glass-panel p-6 flex flex-col justify-center col-span-2 md:col-span-1 lg:col-span-1 group hover:border-green-500/50 transition-all relative overflow-hidden delay-200">
                     <div
                         class="absolute -right-8 -bottom-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
                         <svg class="w-32 h-32 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -404,21 +395,20 @@
     </section>
 
     {{-- ═══════════════════════════ PROJECTS ═══════════════════════════ --}}
-    <section id="projects" class="py-24 bg-[#0a0e1a]">
+    <section id="projects" class="py-24 bg-transparent">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-12 scroll-reveal">
-                <span class="font-mono text-xs text-primary-400 font-bold tracking-widest uppercase">/* Proyek */</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Project Yang Telah Di Buat</h2>
+                <h2 class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-200 to-primary-600 mt-2 tracking-tight">DAFTAR PROJECT</h2>
             </div>
 
             @if ($projects->isEmpty())
-                <div class="scroll-reveal tech-card p-16 text-center border-dashed">
+                <div class="scroll-reveal glass-panel p-16 text-center border-dashed">
                     <p class="font-mono text-slate-600 text-sm">// Belum Ada Data</p>
                 </div>
             @else
                 <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6" id="projects-grid">
                     @foreach ($projects as $i => $project)
-                        <div class="project-item scroll-reveal tech-card flex flex-col delay-{{ ($i % 3) * 100 }} group hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-300 {{ $i >= 6 ? 'hidden' : '' }}"
+                        <div class="project-item scroll-reveal glass-panel flex flex-col delay-{{ ($i % 3) * 100 }} group hover:border-primary-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-300 {{ $i >= 6 ? 'hidden' : '' }}"
                             data-index="{{ $i }}">
                             {{-- Image / Placeholder --}}
                             <div class="aspect-video relative overflow-hidden bg-[#161b22] border-b border-primary-900/30">
@@ -483,49 +473,49 @@
     </section>
 
     {{-- ═══════════════════════════ CERTIFICATES ═══════════════════════════ --}}
-    <section id="certificates" class="py-24 bg-[#0d1117] border-y border-slate-800/50">
+    <section id="certificates" class="py-24 bg-transparent border-y border-slate-800/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-14 scroll-reveal">
-                <span class="font-mono text-xs text-primary-400 font-bold tracking-widest uppercase">/* Sertifikat
-                    */</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Sertifikat & Pencapaian</h2>
+                <h2 class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-600 mt-2 tracking-tight">DAFTAR SERTIFIKAT</h2>
             </div>
 
             @if ($certificates->isEmpty())
-                <div class="scroll-reveal tech-card p-16 text-center">
+                <div class="scroll-reveal glass-panel p-16 text-center">
                     <p class="font-mono text-slate-600 text-sm">// Belum Ada Data</p>
                 </div>
             @else
-                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6" id="certs-grid">
-                    @foreach ($certificates as $i => $cert)
-                        <div class="cert-item scroll-reveal tech-card group delay-{{ ($i % 3) * 100 }} hover:border-violet-500/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)] transition-all duration-300 {{ $i >= 6 ? 'hidden' : '' }}"
-                            data-index="{{ $i }}">
-                            <div class="aspect-[4/3] relative overflow-hidden bg-[#161b22]">
-                                <img src="{{ asset('storage/' . $cert->image) }}" alt="{{ $cert->title }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70 group-hover:opacity-100 cursor-pointer viewable-image">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-[#0d1117]/80 to-transparent opacity-90 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none">
-                                </div>
-
-                                {{-- Nama Penerbit dipindah ke atas pojok kiri gambar --}}
-                                @if ($cert->issuer)
+                <div class="max-h-[60vh] md:max-h-[500px] overflow-y-auto custom-scrollbar-violet pr-2 sm:pr-4" id="certs-container">
+                    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6" id="certs-grid">
+                        @foreach ($certificates as $i => $cert)
+                            <div class="cert-item scroll-reveal glass-panel group delay-{{ ($i % 3) * 100 }} hover:border-violet-500/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)] transition-all duration-300 {{ $i >= 6 ? 'hidden' : '' }}"
+                                data-index="{{ $i }}">
+                                <div class="aspect-[4/3] relative overflow-hidden bg-[#161b22]">
+                                    <img src="{{ asset('storage/' . $cert->image) }}" alt="{{ $cert->title }}"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70 group-hover:opacity-100 cursor-pointer viewable-image">
                                     <div
-                                        class="absolute top-2 left-2 sm:top-3 sm:left-3 bg-[#0a0e1a]/80 backdrop-blur-sm border border-primary-900/50 text-primary-400 font-mono text-[8px] sm:text-[10px] font-semibold px-2 py-1 rounded-md z-10">
-                                        {{ $cert->issuer }}
+                                        class="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-[#0d1117]/80 to-transparent opacity-90 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none">
                                     </div>
-                                @endif
-                            </div>
-                            <div class="p-3 sm:p-5 border-t border-slate-800/50">
-                                <h3
-                                    class="font-bold text-white text-xs sm:text-base line-clamp-1 group-hover:text-primary-400 transition-colors">
-                                    {{ $cert->title }}</h3>
-                                <div class="flex items-center justify-end mt-2 sm:mt-3">
-                                    <span
-                                        class="font-mono text-[8px] sm:text-[10px] text-slate-600">{{ $cert->date->format('M Y') }}</span>
+
+                                    {{-- Nama Penerbit dipindah ke atas pojok kiri gambar --}}
+                                    @if ($cert->issuer)
+                                        <div
+                                            class="absolute top-2 left-2 sm:top-3 sm:left-3 bg-transparent/80 backdrop-blur-sm border border-primary-900/50 text-primary-400 font-mono text-[8px] sm:text-[10px] font-semibold px-2 py-1 rounded-md z-10">
+                                            {{ $cert->issuer }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="p-3 sm:p-5 border-t border-slate-800/50">
+                                    <h3
+                                        class="font-bold text-white text-xs sm:text-base line-clamp-1 group-hover:text-primary-400 transition-colors">
+                                        {{ $cert->title }}</h3>
+                                    <div class="flex items-center justify-end mt-2 sm:mt-3">
+                                        <span
+                                            class="font-mono text-[8px] sm:text-[10px] text-slate-600">{{ $cert->date->format('M Y') }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
                 @if ($certificates->count() > 6)
                     <div class="text-center mt-10">
@@ -545,111 +535,112 @@
     </section>
 
     {{-- ═══════════════════════════ EDUCATION TIMELINE ═══════════════════════════ --}}
-    <section id="education" class="py-24 bg-[#0a0e1a]">
+    <section id="education" class="py-24 bg-transparent">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 scroll-reveal">
-                <span class="font-mono text-xs text-yellow-400 font-bold tracking-widest uppercase">/*Pendidikan*/</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Riwayat Pendidikan</h2>
+                <h2 class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 mt-2 tracking-tight">RIWAYAT PENDIDIKAN</h2>
             </div>
 
             @if ($educations->isEmpty())
-                <div class="scroll-reveal tech-card p-16 text-center">
+                <div class="scroll-reveal glass-panel p-16 text-center">
                     <p class="font-mono text-slate-600 text-sm">// Belum Ada Data</p>
                 </div>
             @else
-                <div class="relative">
-                    {{-- Timeline vertical line --}}
-                    <div
-                        class="absolute left-6 sm:left-8 top-4 bottom-4 w-px bg-gradient-to-b from-yellow-600/50 via-yellow-600/20 to-transparent">
-                    </div>
+                <div class="max-h-[60vh] md:max-h-[600px] overflow-y-auto custom-scrollbar-yellow pr-2 sm:pr-4 py-4" id="edu-container">
+                    <div class="relative">
+                        {{-- Timeline vertical line --}}
+                        <div
+                            class="absolute left-6 sm:left-8 top-4 bottom-4 w-px bg-gradient-to-b from-yellow-600/50 via-yellow-600/20 to-transparent">
+                        </div>
 
-                    <div class="space-y-6">
-                        @foreach ($educations as $i => $edu)
-                            <div class="scroll-reveal relative pl-16 sm:pl-20 delay-{{ ($i % 4) * 100 }} group">
-                                {{-- Timeline dot --}}
-                                <div
-                                    class="absolute left-4 sm:left-6 top-6 w-5 h-5 rounded-full bg-[#0a0e1a] border-2 border-yellow-500/50 group-hover:border-yellow-400 transition-colors flex items-center justify-center z-10">
+                        <div class="space-y-6">
+                            @foreach ($educations as $i => $edu)
+                                <div class="scroll-reveal relative pl-16 sm:pl-20 delay-{{ ($i % 4) * 100 }} group">
+                                    {{-- Timeline dot --}}
                                     <div
-                                        class="w-1.5 h-1.5 rounded-full bg-yellow-500 group-hover:bg-yellow-400 group-hover:shadow-[0_0_10px_rgba(234,179,8,1)] transition-all duration-300">
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="tech-card p-5 sm:p-7 group-hover:border-yellow-500/30 group-hover:shadow-[0_0_30px_rgba(234,179,8,0.05)] transition-all duration-300 relative overflow-hidden">
-                                    {{-- Background glow on hover --}}
-                                    <div
-                                        class="absolute top-0 right-0 w-32 h-32 bg-yellow-600/5 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                                    </div>
-
-                                    <h3 class="text-lg font-bold text-white mb-1">{{ $edu->institution }}</h3>
-                                    <div class="flex flex-wrap items-center gap-2 mb-3">
-                                        <p class="text-yellow-400 text-sm font-medium">{{ $edu->degree }}</p>
-                                        @if ($edu->status)
-                                            <span
-                                                class="px-2 py-0.5 rounded text-[10px] font-bold {{ $edu->status == 'Lulus' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' }} uppercase tracking-wider border">
-                                                {{ $edu->status }}
-                                            </span>
-                                        @endif
-                                    </div>
-
-                                    <div class="flex flex-col gap-3">
+                                        class="absolute left-4 sm:left-6 top-6 w-5 h-5 rounded-full bg-transparent border-2 border-yellow-500/50 group-hover:border-yellow-400 transition-colors flex items-center justify-center z-10">
                                         <div
-                                            class="inline-flex items-center gap-2 bg-[#161b22] w-fit px-3 py-1.5 rounded-md border border-slate-800">
-                                            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                            </svg>
-                                            <span class="text-xs font-mono text-slate-400">{{ $edu->start_year }} -
-                                                {{ $edu->end_year ?? 'Sekarang' }}</span>
+                                            class="w-1.5 h-1.5 rounded-full bg-yellow-500 group-hover:bg-yellow-400 group-hover:shadow-[0_0_10px_rgba(234,179,8,1)] transition-all duration-300">
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="glass-panel p-5 sm:p-7 group-hover:border-yellow-500/30 group-hover:shadow-[0_0_30px_rgba(234,179,8,0.05)] transition-all duration-300 relative overflow-hidden">
+                                        {{-- Background glow on hover --}}
+                                        <div
+                                            class="absolute top-0 right-0 w-32 h-32 bg-yellow-600/5 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                                         </div>
 
-                                        @if ($edu->subs->isNotEmpty())
-                                            <div class="mt-4 space-y-4 border-l-2 border-yellow-500/20 pl-4 py-1">
-                                                @foreach ($edu->subs as $sub)
-                                                    <div class="relative">
-                                                        {{-- Sub-timeline dot --}}
-                                                        <div
-                                                            class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-yellow-500/50 shadow-[0_0_8px_rgba(234,179,8,0.3)]">
-                                                        </div>
+                                        <h3 class="text-lg font-bold text-white mb-1">{{ $edu->institution }}</h3>
+                                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                                            <p class="text-yellow-400 text-sm font-medium">{{ $edu->degree }}</p>
+                                            @if ($edu->status)
+                                                <span
+                                                    class="px-2 py-0.5 rounded text-[10px] font-bold {{ $edu->status == 'Lulus' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' }} uppercase tracking-wider border">
+                                                    {{ $edu->status }}
+                                                </span>
+                                            @endif
+                                        </div>
 
-                                                        <div class="flex flex-wrap items-center gap-2 mb-1">
-                                                            <h5 class="text-xs font-bold text-slate-200">
-                                                                {{ $sub->institution }}</h5>
-                                                            <span
-                                                                class="px-1.5 py-0.5 rounded text-[8px] font-bold {{ $sub->status == 'Lulus' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' }} border uppercase tracking-wider">
-                                                                {{ $sub->status }}
-                                                            </span>
-                                                        </div>
-
-                                                        <div class="flex flex-col gap-1">
-                                                            <p class="text-[10px] font-mono text-slate-500">
-                                                                {{ $sub->start_date?->format('d M Y') }} -
-                                                                {{ $sub->end_date?->format('d M Y') ?? 'Sekarang' }}
-                                                                @if ($sub->supervisor)
-                                                                    <span class="mx-2 opacity-30">|</span>
-                                                                    <span class="text-slate-400">Pembimbing:
-                                                                        {{ $sub->supervisor }}</span>
-                                                                @endif
-                                                            </p>
-                                                            @if ($sub->description)
-                                                                <p
-                                                                    class="text-[10px] text-slate-500 leading-relaxed font-mono mt-1 opacity-80">
-                                                                    {{ $sub->description }}
-                                                                </p>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                        <div class="flex flex-col gap-3">
+                                            <div
+                                                class="inline-flex items-center gap-2 bg-[#161b22] w-fit px-3 py-1.5 rounded-md border border-slate-800">
+                                                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                </svg>
+                                                <span class="text-xs font-mono text-slate-400">{{ $edu->start_year }} -
+                                                    {{ $edu->end_year ?? 'Sekarang' }}</span>
                                             </div>
-                                        @endif
 
+                                            @if ($edu->subs->isNotEmpty())
+                                                <div class="mt-4 space-y-4 border-l-2 border-yellow-500/20 pl-4 py-1">
+                                                    @foreach ($edu->subs as $sub)
+                                                        <div class="relative">
+                                                            {{-- Sub-timeline dot --}}
+                                                            <div
+                                                                class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-yellow-500/50 shadow-[0_0_8px_rgba(234,179,8,0.3)]">
+                                                            </div>
+
+                                                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                                                <h5 class="text-xs font-bold text-slate-200">
+                                                                    {{ $sub->institution }}</h5>
+                                                                <span
+                                                                    class="px-1.5 py-0.5 rounded text-[8px] font-bold {{ $sub->status == 'Lulus' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' }} border uppercase tracking-wider">
+                                                                    {{ $sub->status }}
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="flex flex-col gap-1">
+                                                                <p class="text-[10px] font-mono text-slate-500">
+                                                                    {{ $sub->start_date?->format('d M Y') }} -
+                                                                    {{ $sub->end_date?->format('d M Y') ?? 'Sekarang' }}
+                                                                    @if ($sub->supervisor)
+                                                                        <span class="mx-2 opacity-30">|</span>
+                                                                        <span class="text-slate-400">Pembimbing:
+                                                                            {{ $sub->supervisor }}</span>
+                                                                    @endif
+                                                                </p>
+                                                                @if ($sub->description)
+                                                                    <p
+                                                                        class="text-[10px] text-slate-500 leading-relaxed font-mono mt-1 opacity-80">
+                                                                        {{ $sub->description }}
+                                                                    </p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+
+                                        </div>
+
+                                        {{-- Deskripsi pendidikan telah dihapus --}}
                                     </div>
-
-                                    {{-- Deskripsi pendidikan telah dihapus --}}
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             @endif
@@ -657,194 +648,194 @@
     </section>
 
     {{-- ═══════════════════════════ ACTIVITIES TIMELINE ═══════════════════════════ --}}
-    <section id="activities" class="py-24 bg-[#0a0e1a]">
+    <section id="activities" class="py-24 bg-transparent">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-16 scroll-reveal">
-                <span class="font-mono text-xs text-primary-400 font-bold tracking-widest uppercase">/* Riwayat Kegiatan
-                    */</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Riwayat Kegiatan & Pengalaman</h2>
+                <h2 class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-200 to-neon-600 mt-2 tracking-tight">REKAP KEGIATAN</h2>
             </div>
 
             @if ($activities->isEmpty())
-                <div class="scroll-reveal tech-card p-16 text-center">
+                <div class="scroll-reveal glass-panel p-16 text-center">
                     <p class="font-mono text-slate-600 text-sm">// Tidak Ada Riwayat Kegiatan</p>
                 </div>
             @else
-                @php
-                    $colsPerRow = 3; // 3 per row desktop
-                    $chunks = $activities->chunk($colsPerRow);
-                    $totalShown = 6; // 2 desktop rows shown initially
-                    $mobileLimit = 4; // first 4 items shown on mobile
-                @endphp
+                <div class="max-h-[60vh] md:max-h-[600px] overflow-y-auto custom-scrollbar-amber pr-2 sm:pr-4 py-4">
+                    @php
+                        $colsPerRow = 3; // 3 per row desktop
+                        $chunks = $activities->chunk($colsPerRow);
+                        $totalShown = 6; // 2 desktop rows shown initially
+                        $mobileLimit = 4; // first 4 items shown on mobile
+                    @endphp
 
-                {{-- ── Desktop: Zigzag per Rows ── --}}
-                <div id="activities-zigzag" class="hidden md:block space-y-2">
-                    @foreach ($chunks as $rowIdx => $chunk)
-                        @php
-                            // All rows display L→R chronologically (oldest→newest)
-                            $goRight = $rowIdx % 2 === 0;
-                            $items = $chunk->values()->all();
-                            $count = count($items);
-                            $rowStart = $rowIdx * $colsPerRow;
-                            $rowHidden = $rowStart >= $totalShown;
-                            $displayItems = $items;
-                        @endphp
+                    {{-- ── Desktop: Zigzag per Rows ── --}}
+                    <div id="activities-zigzag" class="hidden md:block space-y-2">
+                        @foreach ($chunks as $rowIdx => $chunk)
+                            @php
+                                // All rows display L→R chronologically (oldest→newest)
+                                $goRight = $rowIdx % 2 === 0;
+                                $items = $chunk->values()->all();
+                                $count = count($items);
+                                $rowStart = $rowIdx * $colsPerRow;
+                                $rowHidden = $rowStart >= $totalShown;
+                                $displayItems = $items;
+                            @endphp
 
-                        <div class="activity-row {{ $rowHidden ? 'hidden' : '' }}" data-row="{{ $rowIdx }}"
-                            data-row-start="{{ $rowStart }}">
+                            <div class="activity-row {{ $rowHidden ? 'hidden' : '' }}" data-row="{{ $rowIdx }}"
+                                data-row-start="{{ $rowStart }}">
 
-                            <div class="flex items-stretch gap-0"
-                                style="{{ $goRight ? 'justify-content:flex-start' : 'justify-content:flex-end' }}">
-                                @foreach ($displayItems as $colIdx => $activity)
-                                    @php
-                                        $globalIdx = $rowStart + $colIdx;
-                                        $isLast = $colIdx === $count - 1;
-                                    @endphp
+                                <div class="flex items-stretch gap-0"
+                                    style="{{ $goRight ? 'justify-content:flex-start' : 'justify-content:flex-end' }}">
+                                    @foreach ($displayItems as $colIdx => $activity)
+                                        @php
+                                            $globalIdx = $rowStart + $colIdx;
+                                            $isLast = $colIdx === $count - 1;
+                                        @endphp
 
-                                    <div class="activity-item px-1.5 flex-shrink-0" style="width:calc((100% - 4rem) / 3)"
-                                        data-index="{{ $globalIdx }}">
-                                        <div
-                                            class="h-full scroll-reveal tech-card p-3 flex flex-col group hover:border-amber-400/30 transition-all duration-300 relative overflow-hidden">
+                                        <div class="activity-item px-1.5 flex-shrink-0" style="width:calc((100% - 4rem) / 3)"
+                                            data-index="{{ $globalIdx }}">
                                             <div
-                                                class="absolute inset-0 bg-primary-600/3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-xl">
-                                            </div>
-                                            @if ($activity->image)
+                                                class="h-full scroll-reveal glass-panel p-3 flex flex-col group hover:border-amber-400/30 transition-all duration-300 relative overflow-hidden">
                                                 <div
-                                                    class="rounded overflow-hidden aspect-video bg-[#161b22] border border-slate-800/50 mb-2 relative flex-shrink-0">
-                                                    <img src="{{ asset('storage/' . $activity->image) }}"
-                                                        alt="{{ $activity->title }}"
-                                                        class="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 cursor-pointer viewable-image">
-                                                    <div
-                                                        class="absolute inset-0 bg-gradient-to-t from-[#0a0e1a] via-transparent to-transparent opacity-40 pointer-events-none">
-                                                    </div>
+                                                    class="absolute inset-0 bg-primary-600/3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-xl">
                                                 </div>
+                                                @if ($activity->image)
+                                                    <div
+                                                        class="rounded overflow-hidden aspect-video bg-[#161b22] border border-slate-800/50 mb-2 relative flex-shrink-0">
+                                                        <img src="{{ asset('storage/' . $activity->image) }}"
+                                                            alt="{{ $activity->title }}"
+                                                            class="w-full h-full object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 cursor-pointer viewable-image">
+                                                        <div
+                                                            class="absolute inset-0 bg-gradient-to-t from-[#0a0e1a] via-transparent to-transparent opacity-40 pointer-events-none">
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <div
+                                                        class="rounded aspect-video bg-[#161b22] border border-slate-800/50 mb-2 flex items-center justify-center flex-shrink-0">
+                                                        <svg class="w-6 h-6 text-slate-700" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1"
+                                                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                        </svg>
+                                                    </div>
+                                                @endif
+                                                <p class="font-mono text-[9px] text-amber-400/70 mb-0.5">
+                                                    {{ optional($activity->date)->format('d M Y') ?? '-' }}</p>
+                                                <h3
+                                                    class="font-bold text-white text-xs mb-1 group-hover:text-amber-400/90 transition-colors leading-snug">
+                                                    {{ $activity->title }}</h3>
+                                                @if ($activity->description)
+                                                    <p
+                                                        class="text-slate-500 text-[10px] leading-relaxed font-mono line-clamp-3">
+                                                        {{ $activity->description }}</p>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        @if (!$isLast)
+                                            <div class="flex-shrink-0 flex items-center justify-center" style="width:2rem">
+                                                <div class="flex items-center">
+                                                    <div class="w-2.5 h-px bg-amber-400/50"></div>
+                                                    <div
+                                                        class="w-4 h-4 rounded-full border-2 border-amber-400/70 bg-transparent flex items-center justify-center flex-shrink-0">
+                                                        <div class="w-1.5 h-1.5 rounded-full bg-amber-400/60"></div>
+                                                    </div>
+                                                    <div class="w-2.5 h-px bg-amber-400/50"></div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            @if (!$loop->last)
+                                @php $nextRowHidden = ($rowIdx + 1) * $colsPerRow >= $totalShown; @endphp
+                                <div class="activity-vconn {{ $rowHidden || $nextRowHidden ? 'hidden' : '' }} flex"
+                                    style="{{ $goRight
+                                        ? 'justify-content:flex-end;padding-right:calc(100%/6 - 1rem)'
+                                        : 'justify-content:flex-start;padding-left:calc(100%/6 - 1rem)' }}"
+                                    data-after-row="{{ $rowIdx }}">
+                                    <div class="flex flex-col items-center py-0.5">
+                                        <div class="w-px h-4 bg-gradient-to-b from-amber-400/50 to-amber-400/20"></div>
+                                        <div
+                                            class="w-4 h-4 rounded-full border-2 border-amber-400/60 bg-transparent flex items-center justify-center flex-shrink-0">
+                                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400/50"></div>
+                                        </div>
+                                        <div class="w-px h-4 bg-gradient-to-b from-amber-400/20 to-transparent"></div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+
+                    {{-- ── Mobile: Vertical Zigzag (S-Curve 100% Match) ── --}}
+                    <div class="md:hidden mt-8 px-8 pb-4" id="activities-mobile-grid">
+                        <div class="relative w-full max-w-md mx-auto">
+                            @foreach ($activities as $mIdx => $activity)
+                                @php $mHidden = $mIdx >= $mobileLimit; @endphp
+
+                                {{-- Container Kartu --}}
+                                <div class="relative w-full act-mobile-item {{ $mHidden ? 'hidden' : '' }} {{ !$loop->last ? 'mb-10' : '' }}"
+                                    data-mobile-idx="{{ $mIdx }}">
+
+                                    {{-- Garis Sambung S-Curve (Tidak dicetak di elemen terakhir) --}}
+                                    @if (!$loop->last)
+                                        @if ($mIdx % 2 == 0)
+                                            <!-- Bracket Kiri -->
+                                            <div
+                                                class="absolute top-[50%] left-[-20px] w-[20px] h-[calc(100%+2.5rem)] border-l-2 border-t-2 border-b-2 border-amber-400/60 rounded-l-xl z-0 pointer-events-none">
+                                            </div>
+                                            <div
+                                                class="absolute top-[calc(100%+1.25rem)] left-[-26px] w-3.5 h-3.5 rounded-full bg-transparent border-[1.5px] border-amber-400 z-10 -translate-y-1/2 flex items-center justify-center">
+                                                <div class="w-1 h-1 rounded-full bg-amber-400"></div>
+                                            </div>
+                                        @else
+                                            <!-- Bracket Kanan -->
+                                            <div
+                                                class="absolute top-[50%] right-[-20px] w-[20px] h-[calc(100%+2.5rem)] border-r-2 border-t-2 border-b-2 border-amber-400/60 rounded-r-xl z-0 pointer-events-none">
+                                            </div>
+                                            <div
+                                                class="absolute top-[calc(100%+1.25rem)] right-[-26px] w-3.5 h-3.5 rounded-full bg-transparent border-[1.5px] border-amber-400 z-10 -translate-y-1/2 flex items-center justify-center">
+                                                <div class="w-1 h-1 rounded-full bg-amber-400"></div>
+                                            </div>
+                                        @endif
+                                    @endif
+
+                                    {{-- Kartu Body --}}
+                                    <div
+                                        class="scroll-reveal glass-panel p-4 group hover:border-amber-400/40 hover:shadow-[0_0_20px_rgba(251,191,36,0.08)] transition-all duration-300 relative overflow-hidden bg-transparent z-10">
+                                        <div
+                                            class="aspect-[16/9] relative overflow-hidden bg-[#161b22] rounded border border-slate-800/50 mb-3">
+                                            @if ($activity->image)
+                                                <img src="{{ asset('storage/' . $activity->image) }}"
+                                                    alt="{{ $activity->title }}"
+                                                    class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 cursor-pointer viewable-image">
                                             @else
-                                                <div
-                                                    class="rounded aspect-video bg-[#161b22] border border-slate-800/50 mb-2 flex items-center justify-center flex-shrink-0">
-                                                    <svg class="w-6 h-6 text-slate-700" fill="none"
-                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="1"
+                                                <div class="w-full h-full flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                     </svg>
                                                 </div>
                                             @endif
-                                            <p class="font-mono text-[9px] text-amber-400/70 mb-0.5">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <p class="font-mono text-[9px] text-amber-400/70 mb-1">
                                                 {{ optional($activity->date)->format('d M Y') ?? '-' }}</p>
                                             <h3
-                                                class="font-bold text-white text-xs mb-1 group-hover:text-amber-400/90 transition-colors leading-snug">
+                                                class="font-bold text-white text-sm mb-1.5 group-hover:text-amber-400/90 transition-colors leading-snug">
                                                 {{ $activity->title }}</h3>
                                             @if ($activity->description)
-                                                <p
-                                                    class="text-slate-500 text-[10px] leading-relaxed font-mono line-clamp-3">
+                                                <p class="text-slate-500 text-[11px] leading-relaxed font-mono line-clamp-3">
                                                     {{ $activity->description }}</p>
                                             @endif
                                         </div>
                                     </div>
 
-                                    @if (!$isLast)
-                                        <div class="flex-shrink-0 flex items-center justify-center" style="width:2rem">
-                                            <div class="flex items-center">
-                                                <div class="w-2.5 h-px bg-amber-400/50"></div>
-                                                <div
-                                                    class="w-4 h-4 rounded-full border-2 border-amber-400/70 bg-[#0a0e1a] flex items-center justify-center flex-shrink-0">
-                                                    <div class="w-1.5 h-1.5 rounded-full bg-amber-400/60"></div>
-                                                </div>
-                                                <div class="w-2.5 h-px bg-amber-400/50"></div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
-
-                        @if (!$loop->last)
-                            @php $nextRowHidden = ($rowIdx + 1) * $colsPerRow >= $totalShown; @endphp
-                            <div class="activity-vconn {{ $rowHidden || $nextRowHidden ? 'hidden' : '' }} flex"
-                                style="{{ $goRight
-                                    ? 'justify-content:flex-end;padding-right:calc(100%/6 - 1rem)'
-                                    : 'justify-content:flex-start;padding-left:calc(100%/6 - 1rem)' }}"
-                                data-after-row="{{ $rowIdx }}">
-                                <div class="flex flex-col items-center py-0.5">
-                                    <div class="w-px h-4 bg-gradient-to-b from-amber-400/50 to-amber-400/20"></div>
-                                    <div
-                                        class="w-4 h-4 rounded-full border-2 border-amber-400/60 bg-[#0a0e1a] flex items-center justify-center flex-shrink-0">
-                                        <div class="w-1.5 h-1.5 rounded-full bg-amber-400/50"></div>
-                                    </div>
-                                    <div class="w-px h-4 bg-gradient-to-b from-amber-400/20 to-transparent"></div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-
-                {{-- ── Mobile: Vertical Zigzag (S-Curve 100% Match) ── --}}
-                <div class="md:hidden mt-8 px-8 pb-4" id="activities-mobile-grid">
-                    <div class="relative w-full max-w-md mx-auto">
-                        @foreach ($activities as $mIdx => $activity)
-                            @php $mHidden = $mIdx >= $mobileLimit; @endphp
-
-                            {{-- Container Kartu --}}
-                            <div class="relative w-full act-mobile-item {{ $mHidden ? 'hidden' : '' }} {{ !$loop->last ? 'mb-10' : '' }}"
-                                data-mobile-idx="{{ $mIdx }}">
-
-                                {{-- Garis Sambung S-Curve (Tidak dicetak di elemen terakhir) --}}
-                                @if (!$loop->last)
-                                    @if ($mIdx % 2 == 0)
-                                        <!-- Bracket Kiri -->
-                                        <div
-                                            class="absolute top-[50%] left-[-20px] w-[20px] h-[calc(100%+2.5rem)] border-l-2 border-t-2 border-b-2 border-amber-400/60 rounded-l-xl z-0 pointer-events-none">
-                                        </div>
-                                        <div
-                                            class="absolute top-[calc(100%+1.25rem)] left-[-26px] w-3.5 h-3.5 rounded-full bg-[#0a0e1a] border-[1.5px] border-amber-400 z-10 -translate-y-1/2 flex items-center justify-center">
-                                            <div class="w-1 h-1 rounded-full bg-amber-400"></div>
-                                        </div>
-                                    @else
-                                        <!-- Bracket Kanan -->
-                                        <div
-                                            class="absolute top-[50%] right-[-20px] w-[20px] h-[calc(100%+2.5rem)] border-r-2 border-t-2 border-b-2 border-amber-400/60 rounded-r-xl z-0 pointer-events-none">
-                                        </div>
-                                        <div
-                                            class="absolute top-[calc(100%+1.25rem)] right-[-26px] w-3.5 h-3.5 rounded-full bg-[#0a0e1a] border-[1.5px] border-amber-400 z-10 -translate-y-1/2 flex items-center justify-center">
-                                            <div class="w-1 h-1 rounded-full bg-amber-400"></div>
-                                        </div>
-                                    @endif
-                                @endif
-
-                                {{-- Kartu Body --}}
-                                <div
-                                    class="scroll-reveal tech-card p-4 group hover:border-amber-400/40 hover:shadow-[0_0_20px_rgba(251,191,36,0.08)] transition-all duration-300 relative overflow-hidden bg-[#0d1117] z-10">
-                                    <div
-                                        class="aspect-[16/9] relative overflow-hidden bg-[#161b22] rounded border border-slate-800/50 mb-3">
-                                        @if ($activity->image)
-                                            <img src="{{ asset('storage/' . $activity->image) }}"
-                                                alt="{{ $activity->title }}"
-                                                class="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700 group-hover:opacity-100 cursor-pointer viewable-image">
-                                        @else
-                                            <div class="w-full h-full flex items-center justify-center">
-                                                <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                </svg>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <p class="font-mono text-[9px] text-amber-400/70 mb-1">
-                                            {{ optional($activity->date)->format('d M Y') ?? '-' }}</p>
-                                        <h3
-                                            class="font-bold text-white text-sm mb-1.5 group-hover:text-amber-400/90 transition-colors leading-snug">
-                                            {{ $activity->title }}</h3>
-                                        @if ($activity->description)
-                                            <p class="text-slate-500 text-[11px] leading-relaxed font-mono line-clamp-3">
-                                                {{ $activity->description }}</p>
-                                        @endif
-                                    </div>
-                                </div>
-
-                            </div>
-                        @endforeach
                     </div>
                 </div>
 
@@ -870,7 +861,7 @@
 
     {{-- ═══════════════════════════ MODAL IMAGE VIEWER ═══════════════════════════ --}}
     <div id="image-modal"
-        class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#0a0e1a]/90 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-transparent/90 backdrop-blur-md opacity-0 transition-opacity duration-300">
         {{-- Tombol Tutup --}}
         <button id="close-modal"
             class="absolute top-4 right-4 sm:top-8 sm:right-8 text-slate-400 hover:text-white bg-[#161b22]/50 hover:bg-red-500/80 p-2 rounded-full transition-all duration-300 z-50">
@@ -899,6 +890,64 @@
             50% {
                 transform: translateY(-10px);
             }
+        }
+
+        /* Custom Scrollbars */
+        .custom-scrollbar-violet::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar-violet::-webkit-scrollbar-track {
+            background: rgba(139, 92, 246, 0.05); 
+            border-radius: 10px;
+        }
+        .custom-scrollbar-violet::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.4); 
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        .custom-scrollbar-violet::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 92, 246, 0.7); 
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .custom-scrollbar-yellow::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar-yellow::-webkit-scrollbar-track {
+            background: rgba(234, 179, 8, 0.05);
+            border-radius: 10px;
+        }
+        .custom-scrollbar-yellow::-webkit-scrollbar-thumb {
+            background: rgba(234, 179, 8, 0.4);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        .custom-scrollbar-yellow::-webkit-scrollbar-thumb:hover {
+            background: rgba(234, 179, 8, 0.7);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .custom-scrollbar-amber::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar-amber::-webkit-scrollbar-track {
+            background: rgba(245, 158, 11, 0.05);
+            border-radius: 10px;
+        }
+        .custom-scrollbar-amber::-webkit-scrollbar-thumb {
+            background: rgba(245, 158, 11, 0.4);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        .custom-scrollbar-amber::-webkit-scrollbar-thumb:hover {
+            background: rgba(245, 158, 11, 0.7);
+            border: 2px solid transparent;
+            background-clip: padding-box;
         }
     </style>
 
